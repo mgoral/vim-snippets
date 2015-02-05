@@ -47,6 +47,8 @@ snippet queue
 # std::priority_queue
 snippet pqueue
 	std::priority_queue<${1:T}> ${2};
+snippet using
+	using ${1:TypeName} = ${2:OriginalType};
 ##
 ## Access Modifiers
 # private
@@ -71,11 +73,9 @@ snippet cl
 	class ${1:`vim_snippets#Filename('$1', 'name')`}
 	{
 	public:
-		$1(${2});
-		~$1();
+		${0}
 
 	private:
-		${0:/* data */}
 	};
 # member function implementation
 snippet mfun
@@ -110,7 +110,7 @@ snippet fori
 
 # foreach
 snippet fore
-	for (${1:auto} ${2:i} : ${3:container})
+	for (${1:auto&} ${2:i} : ${3:container})
 	{
 		${4}
 	}
@@ -132,7 +132,7 @@ snippet itera
 ## Lambdas
 # lamda (one line)
 snippet ld
-	[${1}](${2}){${3}}
+	[${1}](${2}){ ${3} }
 # lambda (multi-line)
 snippet lld
 	[${1}](${2}){
